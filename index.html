@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI LMS Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- GLOBAL APP HEADER -->
+        <header class="main-header">
+            <div class="logo-area">
+                <h2><i class="fa-solid fa-brain"></i> AI LMS Platform</h2>
+                <p id="user-display-tag"><i class="fa-solid fa-user-clock"></i> Guest Session Terminal</p>
+            </div>
+            <div class="header-actions">
+                <button id="theme-toggle-btn" onclick="toggleAppTheme()" title="Switch Design Themes">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+                <button id="global-logout-btn" class="btn btn-danger hidden" onclick="logoutSession()">
+                    <i class="fa-solid fa-power-off"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- SECURITY INTERFACE PANEL (AUTH CONTAINER) -->
+        <section id="auth-section" class="auth-card animate-fade">
+            <div class="auth-toggle">
+                <button id="toggle-login-mode" class="active" onclick="setAuthMode('login')">Sign In</button>
+                <button id="toggle-register-mode" onclick="setAuthMode('register')">New Registration</button>
+            </div>
+
+            <form id="auth-form" onsubmit="handleAuthentication(event)">
+                <div class="role-selector-group">
+                    <label class="role-radio-label">
+                        <input type="radio" name="user-role" value="student" checked onchange="onRoleSwitch()">
+                        <span><i class="fa-solid fa-user"></i> Student Console</span>
+                    </label>
+                    <label class="role-radio-label">
+                        <input type="radio" name="user-role" value="admin" onchange="onRoleSwitch()">
+                        <span><i class="fa-solid fa-user-gear"></i> Admin Authority</span>
+                    </label>
+                </div>
+
+                <!-- Registration Fields Name Block -->
+                <div id="register-name-wrapper" class="input-field-block hidden">
+                    <label for="auth-name-input">Full Identity Name</label>
+                    <div class="input-icon-frame">
+                        <i class="fa-solid fa-id-card"></i>
+                        <input type="text" id="auth-name-input" placeholder="e.g., Alex Vance">
+                    </div>
+                </div>
+
+                <!-- Identity Email Address -->
+                <div class="input-field-block">
+                    <label for="auth-email-input">Terminal Email Address</label>
+                    <div class="input-icon-frame">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="auth-email-input" required placeholder="name@domain.com">
+                    </div>
+                </div>
+
+                <!-- Secure Password Entry -->
+                <div class="input-field-block">
+                    <label for="auth-password-input">Security Code Access Password</label>
+                    <div class="input-icon-frame">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="auth-password-input" required placeholder="••••••••••••">
+                    </div>
+                </div>
+
+                <div id="admin-security-notice" class="admin-notice-box hidden">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Admin profiles require explicit credentials. Registration disabled for authority nodes.</span>
+                </div>
+
+                <button type="submit" id="auth-submit-btn" class="btn btn-primary btn-block">
+                    <span>Initialize Core Connection</span> <i class="fa-solid fa-right-to-bracket"></i>
+                </button>
+            </form>
+        </section>
+
+        <!-- STUDENT DISCOVERY PORTAL (HUB GRID OVERVIEW) -->
+        <section id="portal-hub-section" class="hidden animate-fade">
+            <div class="portal-welcome-banner">
+                <h3>Select Your Active Knowledge Field</h3>
+                <p>Deploy localized training modules, visual architecture mapping streams, and validation code exercises.</p>
+            </div>
+            <div id="courses-cards-grid" class="portal-cards-layout-grid"></div>
+        </section>
+
+        <!-- INTERACTIVE LEARNING LAB ENVIRONMENT -->
+        <section id="learning-workspace-section" class="hidden animate-fade">
+            <div class="workspace-navigation-bar">
+                <button class="btn-text-nav" onclick="exitWorkspaceToHub()">
+                    <i class="fa-solid fa-circle-chevron-left"></i> Return to Main Hub
+                </button>
+                <h3 id="active-workspace-title">Domain Operations Module</h3>
+                <button id="extract-pdf-action-btn" class="btn btn-success" onclick="executeAdvancedPDFGeneration()">
+                    <i class="fa-solid fa-file-pdf"></i> Extract Complete Curriculum Notes
+                </button>
+            </div>
+
+            <div class="workspace-two-column-layout">
+                <div class="workspace-primary-stream">
+                    <div class="video-player-container-frame">
+                        <div class="iframe-responsive-aspect-wrapper">
+                            <iframe id="workspace-video-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="curriculum-content-panel-card">
+                        <div class="panel-accent-header">
+                            <h4><i class="fa-solid fa-book-open"></i> Full Text Syllabus Deck & Architecture Schematics</h4>
+                        </div>
+                        <div id="curriculum-document-flow" class="markdown-rendered-view-pane"></div>
+                    </div>
+                    <div class="puzzles-terminal-evaluation-card">
+                        <div class="panel-accent-header">
+                            <h4><i class="fa-solid fa-terminal"></i> Code Architecture Syntax & Key-Term Verification Puzzles</h4>
+                        </div>
+                        <div id="track-interactive-puzzles-deck" class="puzzles-vertical-list-stack"></div>
+                    </div>
+                </div>
+                <aside class="workspace-sidebar-pane">
+                    <div class="sticky-sidebar-element-box">
+                        <div class="flashcard-panel-card">
+                            <div class="flashcard-panel-heading-row"><span id="flashcard-index-tracker">Flash Deck Core (0/0)</span></div>
+                            <div class="flashcard-perspective-container">
+                                <div id="flashcard-interactive-surface" class="flashcard-node-surface-element" onclick="toggleActiveFlashcardFlip()">System Initializing...</div>
+                            </div>
+                            <div class="flashcard-navigation-dual-controls">
+                                <button class="btn btn-secondary" onclick="shiftFlashcardPointer(-1)"><i class="fa-solid fa-arrow-left"></i> Prev</button>
+                                <button class="btn btn-secondary" onclick="shiftFlashcardPointer(1)">Next <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ADMINISTRATIVE CONTROL PORTAL -->
+        <section id="admin-management-section" class="hidden animate-fade">
+            <div class="portal-welcome-banner">
+                <h3>Central Management Command Grid</h3>
+                <p>Track student data logs, register course matrix deployments, and update infrastructure streams.</p>
+            </div>
+
+            <div class="analytics-metrics-grid-strip">
+                <div class="metric-card-tile blue-border">
+                    <div class="tile-icon-frame"><i class="fa-solid fa-users-viewfinder"></i></div>
+                    <div class="tile-numerical-data-block">
+                        <span class="tile-label">Registered Vectors</span>
+                        <h4 id="metric-total-students-count">0</h4>
+                    </div>
+                </div>
+                <div class="metric-card-tile purple-border">
+                    <div class="tile-icon-frame"><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="tile-numerical-data-block">
+                        <span class="tile-label">Active Deployments</span>
+                        <h4 id="metric-total-tracks-count">0</h4>
+                    </div>
+                </div>
+                <div class="metric-card-tile green-border">
+                    <div class="tile-icon-frame"><i class="fa-solid fa-server"></i></div>
+                    <div class="tile-numerical-data-block">
+                        <span class="tile-label">System Gateway</span>
+                        <h4 class="text-success-accent">ONLINE</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-management-two-column-grid">
+                <div class="admin-form-panel-card">
+                    <h5 id="form-panel-header-title"><i class="fa-solid fa-folder-plus"></i> Management Core Course Pipeline Editor</h5>
+                    <form id="admin-course-injection-form" onsubmit="handleCourseFormSubmission(event)" class="course-injection-grid-form">
+                        <div class="form-input-node grid-column-span-full">
+                            <label for="admin-track-action-mode">Target Pipeline Action Mode</label>
+                            <select id="admin-track-action-mode" onchange="onFormModeOrTrackSwitch()" style="width:100%; background-color:var(--bg-input-field); border:1px solid var(--border-node-color); color:var(--text-primary); padding:10px 12px; border-radius:6px; font-size:13.5px;">
+                                <option value="create">+ Deploy a Completely New Pipeline Variant</option>
+                                <option value="edit-ai">Modify Pipeline: Foundational Artificial Intelligence</option>
+                                <option value="edit-ml">Modify Pipeline: Advanced Machine Learning</option>
+                            </select>
+                        </div>
+                        <div class="form-input-node">
+                            <label for="new-track-id">Course System Identifier ID</label>
+                            <input type="text" id="new-track-id" required placeholder="e.g., neural-networks">
+                        </div>
+                        <div class="form-input-node">
+                            <label for="new-track-title">Course Public Header Title</label>
+                            <input type="text" id="new-track-title" required placeholder="e.g., Deep Neural Networks Matrix">
+                        </div>
+                        <div class="form-input-node grid-column-span-full">
+                            <label for="new-track-video-url">Streaming Media Reference Embed Link</label>
+                            <input type="url" id="new-track-video-url" required placeholder="https://www.youtube.com/embed/... ">
+                        </div>
+                        <div class="form-input-node grid-column-span-full">
+                            <label for="new-track-notes-payload">Full Curriculum Database Payload Text</label>
+                            <textarea id="new-track-notes-payload" rows="7" required></textarea>
+                        </div>
+                        <div class="form-submit-action-row grid-column-span-full">
+                            <button type="submit" id="admin-form-submit-btn" class="btn btn-accent"><i class="fa-solid fa-tower-broadcast"></i> Broadcast Active Course Pipeline</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="admin-ledger-table-panel-card">
+                    <h5><i class="fa-solid fa-address-book"></i> Interactive Student Registry & Computing Progress Ledger Database</h5>
+                    <div class="table-responsive-scroll-frame">
+                        <table class="ledger-data-matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>Student User Vector</th>
+                                    <th>System Electronic Mail Link</th>
+                                    <th>Assigned Compute Course</th>
+                                    <th>Metric Progress Array</th>
+                                    <th>Operational State Tag</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-student-matrix-rows-hook"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
