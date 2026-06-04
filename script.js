@@ -6,12 +6,14 @@ const GLOBAL_DATA_STATE = {
     selectedTrackKey: 'ai',
     isCardFlipped: false,
 
-    // Hardcoded Admin Keys Configuration Space - Updated to request parameters
+    // Hardcoded Admin Keys Configuration Space
     adminRootCredentials: {
         vectorEmail: "admin@aiml.com",
         secretPassword: "admin123"
     },
 
+    // In-Memory Simulation Accounts Storage
+   
     // In-Memory Simulation Accounts Storage
     accountRegistry: [
         { identity: "Marcus Vance", vector: "m.vance@aiml.com", accessKey: "student123" },
@@ -32,10 +34,11 @@ const GLOBAL_DATA_STATE = {
          { identity: "Mark Roy", vector: "mark@hotmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 100, stateFlag: "certified" },
          { identity: "Wendy Choi", vector: "wendy@gmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 40, stateFlag: "inprogress" },
          { identity: "Khushi Parmar", vector: "khushi@aiml.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 50, stateFlag: "inprogress" },
-         { identity: "Nitish Oberoi", vector: "nitish@gmail.com",, registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 45, stateFlag: "inprogress" },
-         { identity: "Samule Kim", vector: "Samule@hotmail.com",, registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 100, stateFlag: "certified" },
+         { identity: "Nitish Oberoi", vector: "nitish@gmail.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 45, stateFlag: "inprogress" },
+         { identity: "Samule Kim", vector: "Samule@hotmail.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 100, stateFlag: "certified" },
         { identity: "Elena Rostova", vector: "elena.r@aiml.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 45, stateFlag: "inprogress" }
     ],
+
 
     tracksMap: {
         ai: {
@@ -71,11 +74,24 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshSystemMetricsSummary();
 });
 
+/* --- FUNCTIONAL PASSWORD EYE TOGGLE CONTROLLER --- */
+window.togglePasswordInputMask = function() {
+    const passwordField = document.getElementById('auth-password-input');
+    const eyeIcon = document.getElementById('toggle-password-visibility');
+    
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        eyeIcon.className = 'fa-solid fa-eye-slash toggle-password-eye';
+    } else {
+        passwordField.type = 'password';
+        eyeIcon.className = 'fa-solid fa-eye toggle-password-eye';
+    }
+};
+
 /* --- SECURE ROUTING GATEWAY SYSTEM ACTIONS --- */
 window.setAuthMode = function(targetMode) {
     const activeRole = document.querySelector('input[name="user-role"]:checked').value;
     
-    // Safety Intercept: Prevent toggling into registration mode while admin role is highlighted
     if (activeRole === 'admin' && targetMode === 'register') {
         alert("Administrative root configurations must use fixed terminal access points. New admin registration is prohibited.");
         document.getElementById('toggle-login-mode').click();
@@ -116,7 +132,6 @@ window.handleAuthentication = function(event) {
     const inputName = document.getElementById('auth-name-input').value.trim();
 
     if (selectedRole === 'admin') {
-        // Strict evaluation of fixed secure root credentials
         if (inputEmail === GLOBAL_DATA_STATE.adminRootCredentials.vectorEmail && 
             inputPassword === GLOBAL_DATA_STATE.adminRootCredentials.secretPassword) {
             
@@ -134,7 +149,6 @@ window.handleAuthentication = function(event) {
             alert("Security Vector Error: Access denied. Invalid administrative credentials.");
         }
     } else {
-        // Student workflow logic pathway
         if (GLOBAL_DATA_STATE.authCardMode === 'register') {
             if (!inputName) {
                 alert("Identity verification parameter missing: Full Name required.");
@@ -155,7 +169,6 @@ window.handleAuthentication = function(event) {
             alert("Account deployment verified. Please sign in to establish your terminal session.");
             setAuthMode('login');
         } else {
-            // Student login validation
             const accountRecord = GLOBAL_DATA_STATE.accountRegistry.find(u => u.vector === inputEmail && u.accessKey === inputPassword);
             
             if (accountRecord) {
@@ -179,9 +192,14 @@ function clearSecurityFormInputs() {
     document.getElementById('auth-email-input').value = '';
     document.getElementById('auth-password-input').value = '';
     document.getElementById('auth-name-input').value = '';
+    // Reset eye visibility indicator states dynamically on clear execution
+    const passwordField = document.getElementById('auth-password-input');
+    const eyeIcon = document.getElementById('toggle-password-visibility');
+    passwordField.type = 'password';
+    eyeIcon.className = 'fa-solid fa-eye toggle-password-eye';
 }
 
-/* --- ADMIN EDITOR LOGIC BLOCK DEPLOYMENT OVERRIDES --- */
+/* --- ADMIN EDITOR LOGIC BLOCK --- */
 window.onFormModeOrTrackSwitch = function() {
     const selectedMode = document.getElementById('admin-track-action-mode').value;
     const currentHeader = document.getElementById('form-panel-header-title');
