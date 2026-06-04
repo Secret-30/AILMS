@@ -15,12 +15,25 @@ const GLOBAL_DATA_STATE = {
     // In-Memory Simulation Accounts Storage
     accountRegistry: [
         { identity: "Marcus Vance", vector: "m.vance@aiml.com", accessKey: "student123" },
+         { identity: "Evae Jung", vector: "Evae@gmail.com", accessKey: "student123" },
+         { identity: "Mark Roy", vector: "mark@hotmail.com", accessKey: "student123" },
+         { identity: "Wendy Choi", vector: "wendy@gmail.com", accessKey: "student123" },
+         { identity: "Khushi Parmar", vector: "khushi@aiml.com", accessKey: "student123" },
+         { identity: "Nitish Oberoi", vector: "nitish@gmail.com", accessKey: "student123" },
+         { identity: "Samule Kim", vector: "Samule@hotmail.com", accessKey: "student123" },
         { identity: "Elena Rostova", vector: "elena.r@aiml.com", accessKey: "student123" }
     ],
 
     // Operational Analytics Mapping Log
     studentLedger: [
         { identity: "Marcus Vance", vector: "m.vance@aiml.com", registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 100, stateFlag: "certified" },
+        { identity: "Marcus Vance", vector: "m.vance@aiml.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 75, stateFlag: "inprogress" },
+         { identity: "Evae Jung", vector: "Evae@gmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress:80, stateFlag: "inprogress" },
+         { identity: "Mark Roy", vector: "mark@hotmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 100, stateFlag: "certified" },
+         { identity: "Wendy Choi", vector: "wendy@gmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 40, stateFlag: "inprogress" },
+         { identity: "Khushi Parmar", vector: "khushi@aiml.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 50, stateFlag: "inprogress" },
+         { identity: "Nitish Oberoi", vector: "nitish@gmail.com",, registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 45, stateFlag: "inprogress" },
+         { identity: "Samule Kim", vector: "Samule@hotmail.com",, registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 100, stateFlag: "certified" },
         { identity: "Elena Rostova", vector: "elena.r@aiml.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 45, stateFlag: "inprogress" }
     ],
 
