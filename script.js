@@ -13,9 +13,7 @@ const GLOBAL_DATA_STATE = {
     },
 
     // In-Memory Simulation Accounts Storage
-   
-    // In-Memory Simulation Accounts Storage
-    accountRegistry: [
+     accountRegistry: [
         { identity: "Marcus Vance", vector: "m.vance@aiml.com", accessKey: "student123" },
          { identity: "Evae Jung", vector: "Evae@gmail.com", accessKey: "student123" },
          { identity: "Mark Roy", vector: "mark@hotmail.com", accessKey: "student123" },
@@ -38,6 +36,7 @@ const GLOBAL_DATA_STATE = {
          { identity: "Samule Kim", vector: "Samule@hotmail.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 100, stateFlag: "certified" },
         { identity: "Elena Rostova", vector: "elena.r@aiml.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 45, stateFlag: "inprogress" }
     ],
+
 
 
     tracksMap: {
