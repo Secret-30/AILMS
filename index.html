@@ -11,7 +11,6 @@
 <body>
 
     <div class="container">
-        <!-- GLOBAL APP HEADER -->
         <header class="main-header">
             <div class="logo-area">
                 <h2><i class="fa-solid fa-brain"></i> AI LMS Platform</h2>
@@ -27,7 +26,6 @@
             </div>
         </header>
 
-        <!-- SECURITY INTERFACE PANEL (AUTH CONTAINER) -->
         <section id="auth-section" class="auth-card animate-fade">
             <div class="auth-toggle">
                 <button id="toggle-login-mode" class="active" onclick="setAuthMode('login')">Sign In</button>
@@ -46,30 +44,28 @@
                     </label>
                 </div>
 
-                <!-- Registration Fields Name Block -->
                 <div id="register-name-wrapper" class="input-field-block hidden">
                     <label for="auth-name-input">Full Identity Name</label>
                     <div class="input-icon-frame">
-                        <i class="fa-solid fa-id-card"></i>
+                        <i class="fa-solid fa-id-card left-icon"></i>
                         <input type="text" id="auth-name-input" placeholder="e.g., Alex Vance">
                     </div>
                 </div>
 
-                <!-- Identity Email Address -->
                 <div class="input-field-block">
                     <label for="auth-email-input">Terminal Email Address</label>
                     <div class="input-icon-frame">
-                        <i class="fa-solid fa-envelope"></i>
+                        <i class="fa-solid fa-envelope left-icon"></i>
                         <input type="email" id="auth-email-input" required placeholder="name@domain.com">
                     </div>
                 </div>
 
-                <!-- Secure Password Entry -->
                 <div class="input-field-block">
                     <label for="auth-password-input">Security Code Access Password</label>
                     <div class="input-icon-frame">
-                        <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-lock left-icon"></i>
                         <input type="password" id="auth-password-input" required placeholder="••••••••••••">
+                        <i class="fa-solid fa-eye toggle-password-eye" id="toggle-password-visibility" onclick="togglePasswordInputMask()"></i>
                     </div>
                 </div>
 
@@ -84,7 +80,6 @@
             </form>
         </section>
 
-        <!-- STUDENT DISCOVERY PORTAL (HUB GRID OVERVIEW) -->
         <section id="portal-hub-section" class="hidden animate-fade">
             <div class="portal-welcome-banner">
                 <h3>Select Your Active Knowledge Field</h3>
@@ -93,7 +88,6 @@
             <div id="courses-cards-grid" class="portal-cards-layout-grid"></div>
         </section>
 
-        <!-- INTERACTIVE LEARNING LAB ENVIRONMENT -->
         <section id="learning-workspace-section" class="hidden animate-fade">
             <div class="workspace-navigation-bar">
                 <button class="btn-text-nav" onclick="exitWorkspaceToHub()">
@@ -142,7 +136,6 @@
             </div>
         </section>
 
-        <!-- ADMINISTRATIVE CONTROL PORTAL -->
         <section id="admin-management-section" class="hidden animate-fade">
             <div class="portal-welcome-banner">
                 <h3>Central Management Command Grid</h3>
