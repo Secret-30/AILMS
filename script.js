@@ -13,14 +13,14 @@ const GLOBAL_DATA_STATE = {
     },
 
     // In-Memory Simulation Accounts Storage
-     accountRegistry: [
+    accountRegistry: [
         { identity: "Marcus Vance", vector: "m.vance@aiml.com", accessKey: "student123" },
-         { identity: "Evae Jung", vector: "Evae@gmail.com", accessKey: "student123" },
-         { identity: "Mark Roy", vector: "mark@hotmail.com", accessKey: "student123" },
-         { identity: "Wendy Choi", vector: "wendy@gmail.com", accessKey: "student123" },
-         { identity: "Khushi Parmar", vector: "khushi@aiml.com", accessKey: "student123" },
-         { identity: "Nitish Oberoi", vector: "nitish@gmail.com", accessKey: "student123" },
-         { identity: "Samule Kim", vector: "Samule@hotmail.com", accessKey: "student123" },
+        { identity: "Evae Jung", vector: "Evae@gmail.com", accessKey: "student123" },
+        { identity: "Mark Roy", vector: "mark@hotmail.com", accessKey: "student123" },
+        { identity: "Wendy Choi", vector: "wendy@gmail.com", accessKey: "student123" },
+        { identity: "Khushi Parmar", vector: "khushi@aiml.com", accessKey: "student123" },
+        { identity: "Nitish Oberoi", vector: "nitish@gmail.com", accessKey: "student123" },
+        { identity: "Samule Kim", vector: "Samule@hotmail.com", accessKey: "student123" },
         { identity: "Elena Rostova", vector: "elena.r@aiml.com", accessKey: "student123" }
     ],
 
@@ -28,16 +28,14 @@ const GLOBAL_DATA_STATE = {
     studentLedger: [
         { identity: "Marcus Vance", vector: "m.vance@aiml.com", registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 100, stateFlag: "certified" },
         { identity: "Marcus Vance", vector: "m.vance@aiml.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 75, stateFlag: "inprogress" },
-         { identity: "Evae Jung", vector: "Evae@gmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress:80, stateFlag: "inprogress" },
-         { identity: "Mark Roy", vector: "mark@hotmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 100, stateFlag: "certified" },
-         { identity: "Wendy Choi", vector: "wendy@gmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 40, stateFlag: "inprogress" },
-         { identity: "Khushi Parmar", vector: "khushi@aiml.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 50, stateFlag: "inprogress" },
-         { identity: "Nitish Oberoi", vector: "nitish@gmail.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 45, stateFlag: "inprogress" },
-         { identity: "Samule Kim", vector: "Samule@hotmail.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 100, stateFlag: "certified" },
+        { identity: "Evae Jung", vector: "Evae@gmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 80, stateFlag: "inprogress" },
+        { identity: "Mark Roy", vector: "mark@hotmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 100, stateFlag: "certified" },
+        { identity: "Wendy Choi", vector: "wendy@gmail.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 40, stateFlag: "inprogress" },
+        { identity: "Khushi Parmar", vector: "khushi@aiml.com",  registeredCourse: "Foundational Artificial Intelligence & Generative Science", executionProgress: 50, stateFlag: "inprogress" },
+        { identity: "Nitish Oberoi", vector: "nitish@gmail.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 45, stateFlag: "inprogress" },
+        { identity: "Samule Kim", vector: "Samule@hotmail.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 100, stateFlag: "certified" },
         { identity: "Elena Rostova", vector: "elena.r@aiml.com", registeredCourse: "Advanced Machine Learning & Statistical Modeling", executionProgress: 45, stateFlag: "inprogress" }
     ],
-
-
 
     tracksMap: {
         ai: {
@@ -46,10 +44,16 @@ const GLOBAL_DATA_STATE = {
             cardIndexPointer: 0,
             puzzlesCollection: [
                 { keyword: "AGENT", clue: "An autonomous architecture node monitoring environmental factors via specific sensors." },
-                { keyword: "TENSOR", clue: "Multi-dimensional statistical numerical array representation managing deep feature matrices." }
+                { keyword: "TENSOR", clue: "Multi-dimensional statistical numerical array representation managing deep feature matrices." },
+                { keyword: "HEURISTIC", clue: "A practical mental shortcut or search rule designed to solve optimization puzzles faster when classic boundary configurations fail." },
+                { keyword: "TOKENS", clue: "The core broken-down structural text bits, characters, or semantic fragments processed directly by transformer text generators." },
+                { keyword: "PROMPT", clue: "The explicit semantic input context sequence engineered to direct an LLM model's contextual execution window." }
             ],
             flashcardsCollection: [
-                { query: "What sets Machine Learning apart from custom heuristic program scripts?", response: "Classic programs combine rules and data to return answers. ML profiles process answers and raw data to extract mathematical rules." }
+                { query: "What sets Machine Learning apart from custom heuristic program scripts?", response: "Classic programs combine rules and data to return answers. ML profiles process answers and raw data to extract mathematical rules." },
+                { query: "What exactly is an Artificial General Intelligence (AGI)?", response: "A theoretical representation of AI capable of matching or surpassing human adaptability across any cognitive domain." },
+                { query: "How does the 'Attention Mechanism' impact sequence-to-sequence model layers?", response: "It allows networks to weigh dynamically how tokens depend on each other across long distances, completely bypassing traditional bottleneck dependencies." },
+                { query: "What is Hallucination inside Large Language Models?", response: "A behavioral flaw where a transformer generates factually incorrect phrases that sound grammatically plausible and confident." }
             ],
             fullSyllabusNotes: `Module 1: Foundational Artificial Intelligence & Historical Frameworks\nArtificial Intelligence (AI) maps computational science models focused on engineering architectures capable of handling complex tasks traditionally requiring human focus.\n\nModule 2: Mathematics Foundations\nMatrix transformation algorithms operate the core pipeline calculations: Y = W * X + b.`
         },
@@ -58,10 +62,16 @@ const GLOBAL_DATA_STATE = {
             videoEmbed: "https://www.youtube.com/embed/hR-tMLTMw0s",
             cardIndexPointer: 0,
             puzzlesCollection: [
-                { keyword: "BIAS", clue: "The algorithmic error value derived directly from structural oversimplification models." }
+                { keyword: "BIAS", clue: "The algorithmic error value derived directly from structural oversimplification models." },
+                { keyword: "OVERFITTING", clue: "A state where a model aligns too closely with custom noise profiles in training datasets, ruining outside performance metrics." },
+                { keyword: "GRADIENT", clue: "The vector matrix of multi-variable partial derivatives pointing toward the steepest rate of function elevation." },
+                { keyword: "EPOCH", clue: "One full execution pass traversing the training data vectors entirely forward and backward through a network loop." }
             ],
             flashcardsCollection: [
-                { query: "What represents the definitive technical function of L1 Lasso Regularization?", response: "It applies an absolute magnitude penalty directly onto the loss curve, driving less predictive weights down to zero to achieve automated feature selection." }
+                { query: "What represents the definitive technical function of L1 Lasso Regularization?", response: "It applies an absolute magnitude penalty directly onto the loss curve, driving less predictive weights down to zero to achieve automated feature selection." },
+                { query: "What is the primary trade-off highlighted by the Bias-Variance dilemma?", response: "High bias causes underfitting due to overly simple structural assumptions, while high variance causes overfitting by treating minor dataset fluctuations as vital rules." },
+                { query: "How does Stochastic Gradient Descent differ from classic Batch Gradient Descent?", response: "Stochastic updates weights using just one sample at a time instead of processing the entire collection, leading to faster updates with more random variance." },
+                { query: "What defines an unsupervised learning structural strategy?", response: "Analyzing unlabelled data pools directly to uncover hidden associations, clusters, or internal features without manual classification labels." }
             ],
             fullSyllabusNotes: `Module 1: Advanced Machine Learning Principles\nStatistical Learning Theory establishes analytical framework limits processing empirical vectors.\n\nModule 2: Regularized Optimization Schemes\nLasso elements add spatial reduction thresholds to mitigate system parameter variance.`
         }
