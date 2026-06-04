@@ -66,5 +66,81 @@ body { background-color: var(--bg-base); color: var(--text-primary); padding: 30
 .input-icon-frame input { width: 100%; background-color: var(--bg-input-field); border: 1px solid var(--border-node-color); color: var(--text-primary); padding: 12px 42px 12px 40px; border-radius: 8px; font-size: 14px; }
 .input-icon-frame input:focus { outline: none; border-color: var(--border-glow-hover); }
 
-/* Eye positioning on right side of field wrapper box */
-.toggle-password-eye { position: absolute; right: 14px; color: var(--text-secondary); cursor: pointer; z-index: 10
+/* Eye Positioning & Styling Rules */
+.toggle-password-eye { position: absolute; right: 14px; color: var(--text-secondary); cursor: pointer; z-index: 10; padding: 4px; font-size: 15px; transition: color 0.2s ease; }
+.toggle-password-eye:hover { color: var(--color-primary-cyan); }
+
+.admin-notice-box { background-color: rgba(168, 85, 247, 0.06); border: 1px dashed var(--color-accent-purple); padding: 12px; border-radius: 8px; font-size: 12px; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; color: var(--text-secondary); }
+
+/* WORKSPACE & DASHBOARD STYLING */
+.portal-welcome-banner { background: linear-gradient(135deg, var(--bg-inner-panel) 0%, var(--bg-input-field) 100%); border: 1px solid var(--border-node-color); border-radius: 12px; padding: 22px 25px; margin-bottom: 25px; }
+.portal-cards-layout-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; }
+.hub-course-card-element { background-color: var(--bg-inner-panel); border: 1px solid var(--border-node-color); border-radius: 12px; padding: 25px; cursor: pointer; position: relative; overflow: hidden; transition: all 0.2s; }
+.hub-course-card-element::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background-color: var(--color-primary-cyan); }
+.hub-course-card-element.purple-card::after { background-color: var(--color-accent-purple); }
+.hub-course-card-element:hover { transform: translateY(-4px); border-color: var(--border-glow-hover); }
+.card-icon-backing { width: 46px; height: 46px; border-radius: 8px; background-color: var(--bg-input-field); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--color-primary-cyan); margin-bottom: 15px; }
+.purple-card .card-icon-backing { color: var(--color-accent-purple); }
+
+.workspace-navigation-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-node-color); padding-bottom: 15px; margin-bottom: 25px; }
+.btn-text-nav { background: transparent; border: none; color: var(--text-secondary); font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.workspace-two-column-layout { display: grid; grid-template-columns: 1fr 360px; gap: 25px; }
+.video-player-container-frame { background-color: #000; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-node-color); margin-bottom: 25px; }
+.iframe-responsive-aspect-wrapper { width: 100%; aspect-ratio: 16 / 9; position: relative; }
+.iframe-responsive-aspect-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+.curriculum-content-panel-card, .puzzles-terminal-evaluation-card, .admin-form-panel-card, .admin-ledger-table-panel-card { background-color: var(--bg-inner-panel); border: 1px solid var(--border-node-color); border-radius: 12px; padding: 22px; margin-bottom: 25px; }
+.panel-accent-header { border-bottom: 1px solid var(--border-node-color); padding-bottom: 10px; margin-bottom: 15px; }
+.markdown-rendered-view-pane { font-size: 14.5px; line-height: 1.65; max-height: 550px; overflow-y: auto; }
+.markdown-rendered-view-pane h2 { font-size: 16px; color: var(--color-primary-cyan); margin: 22px 0 10px 0; }
+.markdown-rendered-view-pane pre { background-color: var(--bg-input-field); border: 1px solid var(--border-node-color); padding: 12px; border-radius: 6px; font-family: monospace; margin-bottom: 14px; }
+
+/* PUZZLES & FLASHCARDS */
+.puzzles-vertical-list-stack { display: flex; flex-direction: column; gap: 12px; }
+.puzzle-node-row-item { background-color: var(--bg-input-field); border: 1px solid var(--border-node-color); border-radius: 8px; padding: 14px; }
+.puzzle-input-action-row { display: flex; gap: 10px; margin-top: 10px; }
+.puzzle-input-action-row input { flex: 1; background-color: var(--bg-base); border: 1px solid var(--border-node-color); color: var(--text-primary); padding: 8px 12px; border-radius: 6px; }
+.flashcard-panel-card { background-color: var(--bg-inner-panel); border: 1px solid var(--border-node-color); border-radius: 12px; padding: 20px; }
+.flashcard-node-surface-element { background-color: var(--bg-input-field); border: 2px solid var(--border-node-color); border-radius: 10px; padding: 25px; min-height: 220px; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; }
+.flashcard-navigation-dual-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+
+/* ANALYTICS STRIP */
+.analytics-metrics-grid-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
+.metric-card-tile { background-color: var(--bg-inner-panel); border: 1px solid var(--border-node-color); border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 15px; }
+.metric-card-tile.blue-border { border-left: 4px solid var(--color-primary-cyan); }
+.metric-card-tile.purple-border { border-left: 4px solid var(--color-accent-purple); }
+.metric-card-tile.green-border { border-left: 4px solid var(--color-success-green); }
+.tile-icon-frame { font-size: 22px; width: 44px; height: 44px; border-radius: 8px; background-color: var(--bg-input-field); display: flex; align-items: center; justify-content: center; }
+.blue-border .tile-icon-frame { color: var(--color-primary-cyan); }
+.purple-border .tile-icon-frame { color: var(--color-accent-purple); }
+.green-border .tile-icon-frame { color: var(--color-success-green); }
+.tile-numerical-data-block { display: flex; flex-direction: column; }
+.tile-label { font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; }
+.text-success-accent { color: var(--color-success-green); }
+
+/* ADMINISTRATIVE CONTROL TABLES */
+.admin-management-two-column-grid { display: flex; flex-direction: column; gap: 25px; }
+.course-injection-grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.grid-column-span-full { grid-column: span 2; }
+.form-input-node label { display: block; font-size: 11px; font-weight: 700; color: var(--text-secondary); margin-bottom: 5px; }
+.form-input-node input, .form-input-node textarea { width: 100%; background-color: var(--bg-input-field); border: 1px solid var(--border-node-color); color: var(--text-primary); padding: 10px 12px; border-radius: 6px; }
+
+.table-responsive-scroll-frame { width: 100%; overflow-x: auto; }
+.ledger-data-matrix-table { width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left; }
+.ledger-data-matrix-table th { background-color: var(--bg-input-field); padding: 12px; color: var(--text-secondary); border-bottom: 2px solid var(--border-node-color); }
+.ledger-data-matrix-table td { padding: 12px; border-bottom: 1px solid var(--border-node-color); }
+.progress-bar-outer-frame { display: inline-block; width: 80px; height: 6px; background-color: var(--bg-base); border-radius: 3px; overflow: hidden; margin-left: 8px; vertical-align: middle; }
+.progress-bar-inner-fill { height: 100%; border-radius: 3px; }
+.status-pill-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.status-pill-badge.certified { background-color: rgba(16, 185, 129, 0.1); color: var(--color-success-green); }
+.status-pill-badge.inprogress { background-color: rgba(56, 189, 248, 0.1); color: var(--color-primary-cyan); }
+
+/* ACTIONS UTILITIES */
+.btn { padding: 10px 18px; border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer; border: 1px solid transparent; display: inline-flex; align-items: center; gap: 6px; }
+.btn-primary { background-color: var(--color-primary-cyan); color: #0f172a; }
+.btn-secondary { background-color: var(--bg-input-field); border-color: var(--border-node-color); color: var(--text-primary); }
+.btn-success { background-color: var(--color-success-green); color: #ffffff; }
+.btn-danger { background-color: var(--color-danger-crimson); color: #ffffff; }
+.btn-accent { background-color: var(--color-accent-purple); color: #ffffff; }
+.btn-block { width: 100%; justify-content: center; }
+.hidden { display: none !important; }
