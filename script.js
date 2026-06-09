@@ -255,7 +255,6 @@ function clearSecurityFormInputs() {
     document.getElementById('auth-email-input').value = '';
     document.getElementById('auth-password-input').value = '';
     document.getElementById('auth-name-input').value = '';
-    // Reset eye visibility indicator states dynamically on clear execution
     const passwordField = document.getElementById('auth-password-input');
     const eyeIcon = document.getElementById('toggle-password-visibility');
     passwordField.type = 'password';
@@ -351,12 +350,11 @@ function processMarkdownTextDocument(rawTextLines) {
     const textPane = document.getElementById('curriculum-document-flow');
     if (!textPane) return;
     
-    // Kept short as requested. Shows only introductory Module summary in the workspace, 
-    // keeping structural fullSyllabusNotes completely protected inside the PDF Generator space.
+    // Completely replaced long module notes with a concise, clean workspace description layout.
     let outputHTML = `
         <h2>Course Workspace Overview</h2>
-        <p>Welcome to your active learning terminal workspace window. Below you will find interactive code variable verification puzzles, technical core concept quiz flash decks, and video streaming timelines.</p>
-        <blockquote><strong>Note:</strong> The full high-definition structural curriculum text asset notes for this course have been compiled directly into the system database. Please execute the print action button below to compile and save your permanent offline PDF Academic Record Syllabus Report document.</blockquote>
+        <p>Welcome to your active learning workspace window. Use this dashboard to solve domain puzzles, review technical quiz flash decks, and track streaming lectures.</p>
+        <p style="color: var(--text-secondary); font-style: italic;"><strong>Note:</strong> The full-text academic syllabus structure and core text formulas are fully compiled into your digital record. Click the <strong>Extract Complete Curriculum (PDF)</strong> button below to export your comprehensive offline handbook.</p>
     `;
     
     textPane.innerHTML = outputHTML;
