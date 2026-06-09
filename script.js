@@ -350,17 +350,15 @@ window.engageCourseTrack = function(trackKey) {
 function processMarkdownTextDocument(rawTextLines) {
     const textPane = document.getElementById('curriculum-document-flow');
     if (!textPane) return;
-    const paragraphLines = rawTextLines.split('\n');
-    let outputHTML = '';
     
-    paragraphLines.forEach(line => {
-        const formatted = line.trim();
-        if (formatted.startsWith('Module') || formatted.startsWith('Table of Contents')) {
-            outputHTML += `<h2>${formatted}</h2>`;
-        } else if (formatted.length > 0) {
-            outputHTML += `<p>${formatted}</p>`;
-        }
-    });
+    // Kept short as requested. Shows only introductory Module summary in the workspace, 
+    // keeping structural fullSyllabusNotes completely protected inside the PDF Generator space.
+    let outputHTML = `
+        <h2>Course Workspace Overview</h2>
+        <p>Welcome to your active learning terminal workspace window. Below you will find interactive code variable verification puzzles, technical core concept quiz flash decks, and video streaming timelines.</p>
+        <blockquote><strong>Note:</strong> The full high-definition structural curriculum text asset notes for this course have been compiled directly into the system database. Please execute the print action button below to compile and save your permanent offline PDF Academic Record Syllabus Report document.</blockquote>
+    `;
+    
     textPane.innerHTML = outputHTML;
     textPane.scrollTop = 0;
 }
